@@ -1,30 +1,19 @@
 const express = require('express');
 const router = express.Router();
+
+const {getAllUsers} = require('../controllers/user.controller');
+const {updateUser} = require('../controllers/user.controller');
+const {deleteUser} = require('../controllers/user.controller');
+const {createUser} = require('../controllers/user.controller');
 const usuario = {
     nombre:'Juan',
     apellido:'salazar'
 }
 
-router.get('/', (req,res)=>{
-    res.json(usuario)
-
-});
-
-
-router.post('/', (req,res) => {
-    res.json('Post to user endpoint')
-
-} );
-
-router.put('/', (req,res) => {
-    res.json('Put to user endpoint')
-
-} );
-
-router.delete('/', (req,res) => {
-    res.json('delete to user endpoint')
-
-} );
+router.get('/',getAllUsers)
+     .post('/', createUser )
+     .put('/',  updateUser)
+     .delete('/',  deleteUser);
 
 
 
