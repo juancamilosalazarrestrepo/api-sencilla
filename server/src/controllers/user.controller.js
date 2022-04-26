@@ -1,6 +1,9 @@
+const middlewares1 = require("../middlewares/middleware1");
+const middlewares2 = require("../middlewares/middleware2");
+
 const userCtrl = {}
 
-userCtrl.getAllUsers =  (req,res)=>{
+userCtrl.getAllUsers =[middlewares1,middlewares2] , (req,res)=>{
     res.json('get to user end point');
 
 }
