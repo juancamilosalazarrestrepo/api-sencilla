@@ -12,16 +12,16 @@ userCtrl.login = async (req,res) => {
             email
         }
     });
-    if(user.validPassword(password)){
+    if( user.validPassword(password)){
         return res.json('usuario login ok')
     }else{
         res.json('user o contraseña no validoo no logeado')
     }
 }
 
-userCtrl.getAllUsers =[middlewares1,middlewares2] , async (req,res)=>{
+userCtrl.getAllUsers = async (req,res)=>{
 
-    const users = await Users.findAll();
+    const users = await User.findAll();
     res.json(users);
 
 }
