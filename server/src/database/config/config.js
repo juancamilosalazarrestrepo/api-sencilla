@@ -2,7 +2,7 @@ module.exports = {
   "development": {
     "username": "root",
     "password": "Camilo1992.",
-    "database": "database_development",
+    "database": "fullstack",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

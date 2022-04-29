@@ -1,15 +1,36 @@
 const middlewares1 = require("../middlewares/middleware1");
 const middlewares2 = require("../middlewares/middleware2");
 
+
+const {User} = require('../database/models')
 const userCtrl = {}
 
-userCtrl.getAllUsers =[middlewares1,middlewares2] , (req,res)=>{
-    res.json('get to user end point');
+userCtrl.login = async (req,res) => {
+    const { email, password} = req.body;
+    const user = await User.findOne({
+        where: {
+            email
+        }
+    });
+    if(user.validPassword(password)){
+        return res.json('usuario login ok')
+    }else{
+        res.json('user o contraseña no validoo no logeado')
+    }
+}
+
+userCtrl.getAllUsers =[middlewares1,middlewares2] , async (req,res)=>{
+
+    const users = await Users.findAll();
+    res.json(users);
 
 }
 
-userCtrl.createUser =  (req,res) => {
-    res.json('Post to user endpoint');
+userCtrl.createUser =  async (req,res) => {
+    const {name, lastName, email, password} = req.body;
+   const user= await User.create({name,lastName,email,password});
+
+    res.json(user);
 
 }
 
