@@ -22,6 +22,7 @@ userCtrl.login = async (req,res) => {
 userCtrl.getAllUsers = async (req,res)=>{
 
     const users = await User.findAll();
+    const userJson = JSON.stringify(users);
     res.json(users);
 
 }
